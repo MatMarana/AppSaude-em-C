@@ -12,7 +12,8 @@ typedef struct Lista{
   Celula *primeiro;
 }Lista;
 
-Lista criarlista();
+Celula criaCelula();
+Lista criaLista();
 void inserirPaciente(Lista *lista,Paciente *paciente);
 int consultarPaciente(Lista *lista,char *RG);
 void atualizarPaciente(Lista *lista,char *RG);
