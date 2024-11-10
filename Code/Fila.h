@@ -13,6 +13,7 @@ typedef struct Fila{
   int quantidade;
 }Fila;
 
+Celula criaCelula(Paciente *paciente);
 Fila criarFila();
 void enfileirarPaciente(Fila *fila,Paciente *paciente);
 void desenfileirarPaciente(Fila *fila);

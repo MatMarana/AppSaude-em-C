@@ -26,6 +26,7 @@ void inserirPaciente(Lista *lista,Paciente *paciente){
         lista->primeiro = nova;
         nova->proximo = atual;
     }
+    lista->quantidade++;
 }
 
 int consultarPaciente(Lista *lista,char *RG){
@@ -37,9 +38,23 @@ int consultarPaciente(Lista *lista,char *RG){
             printf(atual->paciente);
             return i;
         }
+        anterior = atual;
+        atual = atual->proximo;
         i++;
     }
     return 0;
+}
+
+void atualizarPaciente(Lista *lista,char *RG){
+    Celula *anterior = NULL;
+    Celula *atual = lista->primeiro;
+    while(atual->proximo != NULL && atual->paciente->RG != RG){
+        anterior = atual;
+        atual = atual->proximo;
+    }
+    if(atual != NULL){
+        printf("Digite qual informacao deseja atualizar\n");
+    }
 }
 
 void mostrarLista(Lista *lista){
@@ -54,5 +69,22 @@ void mostrarLista(Lista *lista){
             printf(atual);
         }
         printf("\n");
+    }
+}
+
+void removerPaciente(Lista *lista, char *RG){
+    Celula *anterior = NULL;
+    Celula *atual = lista->primeiro;
+    while(atual->proximo != NULL && atual->paciente->RG != RG){
+       anterior = atual;
+       atual = atual->proximo;
+    }
+    if(atual != NULL){
+        if(anterior == NULL){
+            lista->primeiro = atual->proximo;
+        } else {
+            anterior->proximo = atual->proximo;
+        }
+        lista->quantidade--;
     }
 }
