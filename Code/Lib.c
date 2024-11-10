@@ -12,5 +12,6 @@ Data criaData(int dia, int mes, int ano){
 
 Paciente  criaPaciente(char *nome, int idade, char *RG){
     Paciente *paciente = malloc(sizeof(Paciente));
+    paciente->idade = idade;
     return *paciente;
 }

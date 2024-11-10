@@ -12,7 +12,7 @@ typedef struct Lista{
   Celula *primeiro;
 }Lista;
 
-Celula criaCelula();
+Celula *criaCelula(Paciente *paciente);
 Lista criaLista();
 void inserirPaciente(Lista *lista,Paciente *paciente);
 int consultarPaciente(Lista *lista,char *RG);
