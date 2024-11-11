@@ -12,7 +12,8 @@ typedef struct Pilha{
     Celula *topo;
 }Pilha;
 
-Pilha cirarPilha();
+Celula *criarCelula(char *operacao);
+Pilha criarPilha();
 void push(Pilha *pilha, char *operacao);
 void pop(Pilha *pilha);
 void printPilha(Pilha *pilha);

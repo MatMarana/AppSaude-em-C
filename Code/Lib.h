@@ -16,5 +16,7 @@ typedef struct Paciente{
 
 Data criaData(int dia, int mes, int ano);
 Paciente criaPaciente(char *nome, int idade, char *RG);
+void salvarArquivo();
+void lerArquivo();
 
 #endif
