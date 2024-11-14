@@ -1,28 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "Lib.h"
 #include "ListaEncadeada.h"
 
-Celula *criaCelula(Paciente *paciente){
-    Celula *celula = malloc(sizeof(Celula));
+Elista *criaElista(Paciente *paciente){
+    Elista *celula = malloc(sizeof(Elista));
     celula->paciente = paciente;
     celula->proximo = NULL;
     return celula;
 }
 
-Lista criaLista(){
+Lista *criaLista(){
     Lista *lista = malloc(sizeof(Lista));
     lista->quantidade = 0;
     lista->primeiro = NULL;
-    return *lista;
+    return lista;
 }
 
 void inserirPaciente(Lista *lista,Paciente *paciente){
-    Celula *nova = criaCelula(paciente);
+    Elista *nova = criaCelula(paciente);
     if(lista->quantidade == 0){
         lista->primeiro = nova;
     } else {
-        Celula *atual = lista->primeiro;
+        Elista *atual = lista->primeiro;
         lista->primeiro = nova;
         nova->proximo = atual;
     }
@@ -30,8 +31,8 @@ void inserirPaciente(Lista *lista,Paciente *paciente){
 }
 
 int consultarPaciente(Lista *lista,char *RG){
-    Celula *anterior = NULL;
-    Celula *atual = lista->primeiro;
+    Elista *anterior = NULL;
+    Elista *atual = lista->primeiro;
     int i;
     while(atual->proximo != NULL){
         if(atual->paciente->RG == RG){
@@ -46,8 +47,8 @@ int consultarPaciente(Lista *lista,char *RG){
 }
 
 void atualizarPaciente(Lista *lista,char *RG){
-    Celula *anterior = NULL;
-    Celula *atual = lista->primeiro;
+    Elista *anterior = NULL;
+    Elista *atual = lista->primeiro;
     while(atual->proximo != NULL && atual->paciente->RG != RG){
         anterior = atual;
         atual = atual->proximo;
@@ -58,8 +59,8 @@ void atualizarPaciente(Lista *lista,char *RG){
 }
 
 void mostrarLista(Lista *lista){
-    Celula *anterior = NULL;
-    Celula *atual = lista->primeiro;
+    Elista *anterior = NULL;
+    Elista *atual = lista->primeiro;
     if(lista->quantidade == 0){
         printf("Nao ha elementos na lista\n");
     } else {
@@ -73,8 +74,8 @@ void mostrarLista(Lista *lista){
 }
 
 void removerPaciente(Lista *lista, char *RG){
-    Celula *anterior = NULL;
-    Celula *atual = lista->primeiro;
+    Elista *anterior = NULL;
+    Elista *atual = lista->primeiro;
     while(atual->proximo != NULL && atual->paciente->RG != RG){
        anterior = atual;
        atual = atual->proximo;

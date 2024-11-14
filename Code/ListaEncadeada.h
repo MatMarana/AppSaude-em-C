@@ -5,19 +5,20 @@
 typedef struct Celula{
   Paciente *paciente;
   struct Celula *proximo;
-}Celula;
+}Elista;
 
 typedef struct Lista{
   int quantidade;
-  Celula *primeiro;
+  Elista *primeiro;
 }Lista;
 
-Celula *criaCelula(Paciente *paciente);
-Lista criaLista();
+Elista *criaElista(Paciente *paciente);
+Lista *criaLista();
 void inserirPaciente(Lista *lista,Paciente *paciente);
 int consultarPaciente(Lista *lista,char *RG);
 void atualizarPaciente(Lista *lista,char *RG);
 void mostrarLista(Lista *lista);
 void removerPaciente(Lista *lista, char *RG);
+
 
 #endif
