@@ -2,30 +2,17 @@
 #define ARVOREBIN_H_INCLUDED
 #include "Lib.h"
 
-typedef struct Celula{
-    struct Celula *esquerdo;
-    struct Celula *direito;
+typedef struct EArvore{
+    struct EArvore *esquerdo;
+    struct EArvore *direito;
     Paciente *paciente;
-} Celula;
+}EArvore;
 
 typedef struct ArvoreBin{
-    Celula *raiz;
+    EArvore *raiz;
     int altura;
     int quantidade;
 } Arvore;
 
-Arvore *iniciaArvore();
-Celula *iniciaCelula();
-Celula *buscarValor(Arvore arvore, Data *data);
-Celula *encontraPosicao(Arvore arvore, Paciente *paciente);
-int verificaFolha(Celula *vertice);
-int doisFilhos(Celula *vertice);
-void visitaValor(Celula *raiz);
-void inOrdem(Celula *raiz);
-void preOrdem(Celula *raiz);
-void posOrdem(Celula *raiz);
-void liberarArvore(Celula *raiz);
-void inserirElemento(Arvore *arvore, Paciente *paciente);
-void removerVertice(Arvore *arvore, Celula *vertice);
 
 #endif

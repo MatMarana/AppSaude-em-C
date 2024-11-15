@@ -30,31 +30,60 @@ void inserirPaciente(Lista *lista,Paciente *paciente){
     lista->quantidade++;
 }
 
-int consultarPaciente(Lista *lista,char *RG){
+Paciente *consultarPaciente(Lista *lista,char *RG){ // arrumar
     Elista *anterior = NULL;
     Elista *atual = lista->primeiro;
-    int i;
     while(atual->proximo != NULL){
-        if(atual->paciente->RG == RG){
-            printf(atual->paciente);
-            return i;
+        if(strcmp(atual->paciente->RG, RG) == 0){
+            printf("Paciente encontrado:\n"); 
+            printf("Nome: %s\n", atual->paciente->nome); 
+            printf("RG: %s\n", atual->paciente->RG); 
+            printf("Idade: %d\n", atual->paciente->idade); 
+            printf("Data de Registro: %d/%d/%d\n", atual->paciente->cadastro->dia, atual->paciente->cadastro->mes,atual->paciente->cadastro->ano);
+            return atual->paciente;
         }
         anterior = atual;
         atual = atual->proximo;
-        i++;
     }
-    return 0;
+    return NULL;
 }
 
 void atualizarPaciente(Lista *lista,char *RG){
     Elista *anterior = NULL;
     Elista *atual = lista->primeiro;
-    while(atual->proximo != NULL && atual->paciente->RG != RG){
+    while(atual->proximo != NULL && (strcmp(atual->paciente->RG, RG) == 0)){
         anterior = atual;
         atual = atual->proximo;
     }
     if(atual != NULL){
-        printf("Digite qual informacao deseja atualizar\n");
+       int escolha; 
+       printf("Digite o número da informação que deseja atualizar:\n"); 
+       printf("1 - Nome\n"); printf("2 - RG\n"); printf("3 - Idade\n"); 
+       printf("4 - Data de Registro\n"); 
+       scanf("%d", &escolha); 
+       switch (escolha) { 
+            case 1: 
+                printf("Digite o novo nome: "); 
+                scanf("%s", atual->paciente->nome); 
+                break;
+            case 2: 
+                printf("Digite o novo RG: "); 
+                scanf("%s", atual->paciente->RG); 
+                break; 
+            case 3: 
+                printf("Digite a nova idade: "); 
+                scanf("%d", &atual->paciente->idade); 
+                break; 
+            case 4: 
+                printf("Digite o novo dia de registro: "); 
+                scanf("%d", &atual->paciente->cadastro->dia); 
+                printf("Digite o novo mês de registro: "); 
+                scanf("%d", &atual->paciente->cadastro->mes); 
+                printf("Digite o novo ano de registro: "); 
+                scanf("%d", &atual->paciente->cadastro->ano); 
+                break; 
+        } 
+       printf("Informações do paciente atualizadas com sucesso.\n");
     }
 }
 
@@ -65,9 +94,13 @@ void mostrarLista(Lista *lista){
         printf("Nao ha elementos na lista\n");
     } else {
         while(atual->proximo != NULL){
+            printf("Paciente encontrado:\n"); 
+            printf("Nome: %s\n", atual->paciente->nome); 
+            printf("RG: %s\n", atual->paciente->RG); 
+            printf("Idade: %d\n", atual->paciente->idade); 
+            printf("Data de Registro: %d/%d/%d\n", atual->paciente->cadastro->dia, atual->paciente->cadastro->mes,atual->paciente->cadastro->ano);
             anterior = atual;
             atual = atual->proximo;
-            printf(atual);
         }
         printf("\n");
     }

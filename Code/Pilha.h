@@ -2,19 +2,20 @@
 #define PILHA_H_INCLUDED
 #include "Lib.h"
 
-typedef struct Celula{
+typedef struct EPilha{
     char operacao;
-    struct Celula *proximo;
-}Celula;
+    struct EPilha *proximo;
+    Paciente *paciente;
+}EPilha;
 
 typedef struct Pilha{
     int quantidade;
-    Celula *topo;
+    EPilha *topo;
 }Pilha;
 
-Celula *criarCelula(char *operacao);
-Pilha criarPilha();
-void push(Pilha *pilha, char *operacao);
+EPilha *criarCelula(char *operacao, Paciente *paciente);
+Pilha *criarPilha();
+void push(Pilha *pilha, char *operacao,Paciente *paciente);
 void pop(Pilha *pilha);
 void printPilha(Pilha *pilha);
 
