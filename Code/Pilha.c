@@ -1,12 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Lib.h"
 #include "Pilha.h"
 
-EPilha *criarCelula(char *operacao, Paciente *paciente){
+EPilha *criarEPilha(char *operacao, Paciente *paciente){
     EPilha *celula = malloc(sizeof(EPilha));
-    celula->operacao = operacao;
+    printf("B");
+    strcpy(&celula->operacao,operacao);
+    printf("C");
     celula->paciente = paciente;
+    printf("D");
     celula->proximo = NULL;
     return celula;
 }
@@ -19,7 +23,7 @@ Pilha *criarPilha(){
 }
 
 void push(Pilha *pilha, char *operacao, Paciente *paciente){
-    EPilha *nova = criarCelula(operacao,paciente);
+    EPilha *nova = criarEPilha(operacao,paciente);
     if(pilha->quantidade == 0){
         pilha->topo = nova;
     } else {
@@ -30,7 +34,7 @@ void push(Pilha *pilha, char *operacao, Paciente *paciente){
     pilha->quantidade++;
 }
 
-void pop(Pilha *pilha){
+EPilha *pop(Pilha *pilha){
     EPilha *temp = pilha->topo;
     if(pilha->quantidade == 1){
         pilha->topo = NULL;
@@ -39,14 +43,13 @@ void pop(Pilha *pilha){
     }
     free(temp);
     pilha->quantidade--;
+    return temp;
 }
 
 void printPilha(Pilha *pilha){
     EPilha *atual = pilha->topo;
-    EPilha *anterior = NULL;
     while(atual->proximo != NULL){
-        print(atual);
-        anterior = atual;
+        printf("%s",&atual->operacao);
         atual = atual->proximo;
     }
 }

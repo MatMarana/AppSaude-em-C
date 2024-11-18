@@ -14,5 +14,11 @@ typedef struct ArvoreBin{
     int quantidade;
 } Arvore;
 
+EArvore *criaEArvore(Paciente *paciente);
+Arvore *criaArvore();
+void visitarEArvore(EArvore *celula);
+void mostrarEmOrdem(EArvore *raiz);
+EArvore *balanceamento(Arvore *arvore, Paciente *paciente, int tipoArvore);
+void inserirNaArvore(Arvore *arvore, Paciente *paciente, int tipoArvore);
 
 #endif

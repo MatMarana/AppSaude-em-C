@@ -13,10 +13,10 @@ typedef struct Pilha{
     EPilha *topo;
 }Pilha;
 
-EPilha *criarCelula(char *operacao, Paciente *paciente);
+EPilha *criarEPilha(char *operacao, Paciente *paciente);
 Pilha *criarPilha();
 void push(Pilha *pilha, char *operacao,Paciente *paciente);
-void pop(Pilha *pilha);
+EPilha *pop(Pilha *pilha);
 void printPilha(Pilha *pilha);
 
 #endif

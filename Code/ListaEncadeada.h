@@ -15,10 +15,13 @@ typedef struct Lista{
 Elista *criaElista(Paciente *paciente);
 Lista *criaLista();
 void inserirPaciente(Lista *lista,Paciente *paciente);
-int consultarPaciente(Lista *lista,char *RG);
+Paciente *consultarPaciente(Lista *lista,char *RG);
 void atualizarPaciente(Lista *lista,char *RG);
 void mostrarLista(Lista *lista);
 void removerPaciente(Lista *lista, char *RG);
+
+void salvarArquivo(Lista *lista, const char *nomeArquivo);
+Lista lerArquivo(const char *nomeArquivo);
 
 
 #endif

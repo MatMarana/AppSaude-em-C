@@ -19,8 +19,7 @@ Data *criaData(int dia, int mes, int ano);
 Paciente *criaPaciente(char *nome, int idade, char *RG, int dia, int mes, int ano);
 
 // Escopo das funções de Arquivos
-void salvarArquivo(Lista *lista, const char *nomeArquivo);
-Lista lerArquivo(const char *nomeArquivo);
+
 
 
 #endif
