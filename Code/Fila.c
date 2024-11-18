@@ -31,16 +31,18 @@ void enfileirarPaciente(Fila *fila,Paciente *paciente){
     fila->quantidade++;
 }
 
-void desenfileirarPaciente(Fila *fila){ 
+Paciente *desenfileirarPaciente(Fila *fila){ 
     if(fila->quantidade != 0){
+        Efila *atual = fila->head;
         if(fila->quantidade == 1){
+            fila->head = NULL;
             fila->tail = NULL;
         } else {
-            Efila *atual = fila->head;
             fila->head = atual->proximo;
-            free(atual);
         }
+        free(atual);
         fila->quantidade--;
+        return atual->paciente;
     }
 }
 

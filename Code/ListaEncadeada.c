@@ -146,3 +146,4 @@ Lista lerArquivo(const char *nomeArquivo){
     fclose(file);
     return *lista;
 }
+

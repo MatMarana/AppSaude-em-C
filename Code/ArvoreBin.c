@@ -24,7 +24,7 @@ Arvore *criaArvore(){
 void visitarEArvore(EArvore *celula){
     if(celula != NULL){
         Paciente *paciente = celula->paciente;
-        printf("Nome: %s, Idade: %d, RG: %s, Data de Cadastro: %02d/%02d/%d\n",
+        printf("Nome: %s\n Idade: %d\n RG: %s\n Data de Cadastro: %02d/%02d/%d\n",
                paciente->nome, paciente->idade,paciente->RG, 
                paciente->cadastro->dia, paciente->cadastro->mes, paciente->cadastro->ano);
     }
@@ -82,7 +82,8 @@ EArvore *balanceamento(Arvore *arvore, Paciente *paciente, int tipoArvore){
 
 void inserirNaArvore(Arvore *arvore, Paciente *paciente, int tipoArvore){
     EArvore *novo = criaEArvore(paciente);
-    if(arvore->raiz = NULL){
+    if(arvore->raiz == NULL){
+        printf("F");
         arvore->raiz = novo;
     } else {
         EArvore *posicao = balanceamento(arvore, paciente, tipoArvore);
@@ -109,6 +110,7 @@ void inserirNaArvore(Arvore *arvore, Paciente *paciente, int tipoArvore){
                 posicao->esquerdo = novo;
             } else {
                 posicao->direito = novo;
+                printf("F");
             }
         }
     }

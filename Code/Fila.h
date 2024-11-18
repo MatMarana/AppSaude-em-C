@@ -16,7 +16,7 @@ typedef struct Fila{
 Efila *criaEfila(Paciente *paciente);
 Fila *criarFila();
 void enfileirarPaciente(Fila *fila,Paciente *paciente);
-void desenfileirarPaciente(Fila *fila);
+Paciente *desenfileirarPaciente(Fila *fila);
 void mostrarFila(Fila *fila);
 
 #endif

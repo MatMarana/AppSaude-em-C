@@ -3,7 +3,7 @@
 #include "Lib.h"
 
 typedef struct EPilha{
-    char operacao;
+    int verificaAcao;
     struct EPilha *proximo;
     Paciente *paciente;
 }EPilha;
@@ -13,10 +13,10 @@ typedef struct Pilha{
     EPilha *topo;
 }Pilha;
 
-EPilha *criarEPilha(char *operacao, Paciente *paciente);
+EPilha *criarEPilha(int verificaAcao, Paciente *paciente);
 Pilha *criarPilha();
-void push(Pilha *pilha, char *operacao,Paciente *paciente);
-EPilha *pop(Pilha *pilha);
+void push(Pilha *pilha, int verificaAcao,Paciente *paciente);
+void pop(Pilha *pilha);
 void printPilha(Pilha *pilha);
 
 #endif

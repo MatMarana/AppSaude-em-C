@@ -20,7 +20,7 @@ int main(void) {
   int mes; // cria a variável mes
   int ano; // cria a variável ano
 
-  EPilha *operacao; // cria a variável operação, um elemento da Pilha
+   
 
   Lista *lista = criaLista(); // cria a lista
   Pilha *pilha = criarPilha(); // cria a pilha
@@ -29,6 +29,8 @@ int main(void) {
   Arvore *arvoreDia = criaArvore(); // cria a arvore de dia
   Arvore *arvoreMes = criaArvore(); // cria a arvore de mes
   Arvore *arvoreAno = criaArvore(); // cria a arvore de ano
+
+  EPilha *atual = pilha->topo; // cria a variável operação, um elemento da Pilha
 
 
   do{ // incia o menu
@@ -68,7 +70,6 @@ int main(void) {
         scanf("%d", &ano); // Lê o ano do cadastro
 
         Paciente *paciente = criaPaciente(nome,idade,RG,dia,mes,ano); // cria o paciente com as informações digitadas
-        push(pilha, "ListaI", paciente); // adiciona a operação na pilha
         inserirPaciente(lista,paciente); // insere o paciente na lista
 
         inserirNaArvore(arvoreIdade,paciente,1); //insere o paciente na arvore de idade
@@ -91,7 +92,6 @@ int main(void) {
         printf("Digite o RG do Paciente\n");
         scanf("%s", RG); // Lê o Rg do paciente
 
-       // push(pilha,"ListaR", paciente);
         removerPaciente(lista,RG); // remove o paciente da lista
       } else {
         printf("Escolha invalida, tente novamente\n");
@@ -107,11 +107,11 @@ int main(void) {
         scanf("%s", RG); // Lê o Rg do paciente
         Paciente *paciente = consultarPaciente(lista, RG); // busca o paciente pelo RG
 
-        push(pilha,"FilaI",paciente);
+        push(pilha, 0,paciente);
         enfileirarPaciente(fila, paciente); // adiciona o paciente na fila
       } else if (segundaEscolha == 2){ // se a segunda escolha for 2
-        //push(pilha,"FilaR", paciente);
-        desenfileirarPaciente(fila); //remove o paciente da fila
+        Paciente *paciente  = desenfileirarPaciente(fila); //remove o paciente da fila
+        push(pilha, 1, paciente); // adiciona paciente na pilha
       } else if(segundaEscolha == 3){ // se a segunda escolha for 3
         mostrarFila(fila); // mostra a fila
       } else {
@@ -135,16 +135,12 @@ int main(void) {
       }
       break;  
     case 4:
-      operacao = pop(pilha);
-      if(strcmp(&operacao->operacao,"ListaI") == 0){
-        removerPaciente(lista, operacao->paciente->RG);
-      } else if(strcmp(&operacao->operacao,"ListaR") == 0){
-        inserirPaciente(lista,operacao->paciente);
-      } else if(strcmp(&operacao->operacao,"FilaI") == 0){
+      if(atual->verificaAcao == 0){
         desenfileirarPaciente(fila);
-      } else if(strcmp(&operacao->operacao,"FilaR") == 0){
-        enfileirarPaciente(fila,operacao->paciente);
+      } else if(atual->verificaAcao == 1){
+        enfileirarPaciente(fila,atual->paciente);
       }
+      pop(pilha);
       break;
     case 5:
       printf("Digite 1 - Salvar os Pacientes em um Aquivo\n");
