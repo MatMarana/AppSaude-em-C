@@ -2,10 +2,7 @@
 #include <stdlib.h>  
 #include <string.h> 
 #include "Lib.h"  
-#include "ListaEncadeada.h"  
-#include "Fila.h" 
-#include "ArvoreBin.h" 
-#include "Pilha.h"  
+
 
 // cria uma nova data com dia, mês e ano
 Data *criaData(int dia, int mes, int ano){ 

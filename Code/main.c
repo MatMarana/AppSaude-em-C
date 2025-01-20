@@ -68,14 +68,12 @@ int main(void) {
         scanf("%d", &mes); // Lê o mes do cadastro
         printf("Digite o ano atual\n");
         scanf("%d", &ano); // Lê o ano do cadastro
-
         Paciente *paciente = criaPaciente(nome,idade,RG,dia,mes,ano); // cria o paciente com as informações digitadas
         inserirPaciente(lista,paciente); // insere o paciente na lista
-
-        inserirNaArvore(arvoreIdade,paciente,1); //insere o paciente na arvore de idade
-        inserirNaArvore(arvoreDia,paciente,2); //insere o paciente na arvore de dia
-        inserirNaArvore(arvoreMes,paciente,3); //insere o paciente na arvore de mes 
-        inserirNaArvore(arvoreAno,paciente,4); //insere o paciente na arvore de ano
+        //inserirNaArvore(arvoreIdade,paciente,1); //insere o paciente na arvore de idade
+        //inserirNaArvore(arvoreDia,paciente,2); //insere o paciente na arvore de dia
+        //inserirNaArvore(arvoreMes,paciente,3); //insere o paciente na arvore de mes 
+        //inserirNaArvore(arvoreAno,paciente,4); //insere o paciente na arvore de ano
       } else if (segundaEscolha ==  2){ // se segunda esolha for 2
         printf("Digite o RG do Paciente\n"); 
         scanf("%s", RG); // Lê o Rg do paciente

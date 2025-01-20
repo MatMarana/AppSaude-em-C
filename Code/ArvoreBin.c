@@ -1,21 +1,20 @@
-#include  <stdio.h>  
+#include <stdio.h>  
 #include <stdlib.h> 
 #include "ArvoreBin.h"  
 #include "Lib.h"  
 
 // cria um nó da árvore com um paciente
 EArvore *criaEArvore(Paciente *paciente){
-    EArvore *celula = malloc(sizeof(EArvore));  // aloca memória para a célula
+    EArvore *celula = (EArvore *)(sizeof(EArvore));  // aloca memória para a célula
     celula->paciente = paciente;  // associa o paciente à célula
     celula->direito = NULL;  // inicializa o ponteiro direito como NULL
     celula->esquerdo = NULL;  // inicializa o ponteiro esquerdo como NULL
-
     return celula;  // retorna a célula criada
 }
 
 // cria a árvore binária e inicializa suas variáveis
 Arvore *criaArvore(){
-    Arvore *arvore = malloc(sizeof(Arvore));  // aloca memória para a árvore
+    Arvore *arvore = (Arvore *)malloc(sizeof(Arvore));  // aloca memória para a árvore
     arvore->altura = 0;  // define a altura inicial como 0
     arvore->quantidade = 0;  // define a quantidade de nós como 0
     arvore->raiz = NULL;  // define a raiz como NULL
@@ -90,8 +89,10 @@ EArvore *balanceamento(Arvore *arvore, Paciente *paciente, int tipoArvore){
 // insere um novo paciente na árvore, balanceando a árvore de acordo com o critério especificado
 void inserirNaArvore(Arvore *arvore, Paciente *paciente, int tipoArvore){
     EArvore *novo = criaEArvore(paciente);  // cria o novo nó
+    printf("5");
     if(arvore->raiz == NULL){  // se a árvore estiver vazia
         arvore->raiz = novo;  // a nova célula se torna a raiz
+        printf("6");
     } else {
         EArvore *posicao = balanceamento(arvore, paciente, tipoArvore);  // encontra a posição correta para o novo nó
         // insere o novo nó dependendo do critério de ordenação
